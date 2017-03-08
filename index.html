@@ -1,0 +1,49 @@
+<!doctype html>
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <style>
+    
+        div{
+            border: 1px solid black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div ng-controller="mainCtrl as main">
+        <div ng-click=main.showModel()> {{main.car.model}}</div>
+        <div ng-click="main.showColor(main.car)"> {{main.car.color}}</div>
+        <div ng-style="{color:main.car.color}"ng-click=main.showYear(main.car.year)> {{main.car.year}}</div>
+    </div>
+</body>
+<script>
+    var app = angular.module("app", []);
+    app.controller("mainCtrl", mainCtrl)
+
+    function mainCtrl() {
+        var main = this;
+        main.title = "Hello main controller"
+        main.car = {
+            model: "seat ibiza", color: "black", year: 2011
+        }
+            
+       main.showModel=function(){
+           alert(main.car.model)
+       }
+        main.showColor=function(car){
+           car.color="blue"
+       }
+        
+         main.showYear=function(year){
+           alert(year)
+       }
+    }
+</script>
+
+</html>
